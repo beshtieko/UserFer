@@ -1,16 +1,15 @@
-FROM H1M4N5HU0P/MAFIA-USERBOT:main
+FROM beshtieko/UserFer:main
 
-# clonning repo 
-RUN git clone https://github.com/H1M4N5HU0P/MAFIA-USERBOT.git /root/userbot
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-RUN pip install --upgrade pip
+COPY installer.sh .
+
+RUN bash installer.sh
 
 # working directory 
 WORKDIR /root/userbot
 
-# Install requirements
-RUN pip3 install -U -r requirements.txt
 
-ENV PATH="/home/userbot/bin:$PATH"
+ENV ENV TZ=Asia/Kolkata
 
-CMD ["python3","-m","userbot"]
+CMD ["bash", "startup"]
