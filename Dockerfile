@@ -1,12 +1,9 @@
-FROM beshtieko/UserFer:latest
+FROM H1M4N5HU0P/MAFIA-USERBOT:latest
 
 # clonning repo 
-RUN git clone https://github.com/beshtieko/UserFer.git /root/userbot
+RUN git clone https://github.com/H1M4N5HU0P/MAFIA-USERBOT.git /root/userbot
 
-RUN apt-get update -y && apt-get upgrade -y \
-    && apt-get install -y --no-install-recommends ffmpeg \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+RUN pip install --upgrade pip
 
 # working directory 
 WORKDIR /root/userbot
