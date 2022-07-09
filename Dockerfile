@@ -1,4 +1,4 @@
-FROM H1M4N5HU0P/MAFIA-USERBOT:latest
+FROM H1M4N5HU0P/MAFIA-USERBOT:main
 
 # clonning repo 
 RUN git clone https://github.com/H1M4N5HU0P/MAFIA-USERBOT.git /root/userbot
