@@ -3,7 +3,10 @@ FROM beshtieko/UserFer:latest
 # clonning repo 
 RUN git clone https://github.com/beshtieko/UserFer.git /root/userbot
 
-RUN pip install --upgrade pip
+RUN apt-get update -y && apt-get upgrade -y \
+    && apt-get install -y --no-install-recommends ffmpeg \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 # working directory 
 WORKDIR /root/userbot
