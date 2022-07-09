@@ -1,9 +1,16 @@
-FROM nikolaik/python-nodejs:python3.9-nodejs18
-RUN apt-get update -y && apt-get upgrade -y \
-    && apt-get install -y --no-install-recommends ffmpeg \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
-COPY . /app/
-WORKDIR /app/
-RUN pip3 install --no-cache-dir --upgrade --requirement requirements.txt
-CMD bash start
+FROM beshtieko/UserFer:latest
+
+# clonning repo 
+RUN git clone https://github.com/beshtieko/UserFer.git /root/userbot
+
+RUN pip install --upgrade pip
+
+# working directory 
+WORKDIR /root/userbot
+
+# Install requirements
+RUN pip3 install -U -r requirements.txt
+
+ENV PATH="/home/userbot/bin:$PATH"
+
+CMD ["python3","-m","userbot"]
